@@ -64,30 +64,30 @@ class CycleGAN:
         self.input_a = tf.placeholder(
             tf.float32, [
                 1,
-                model.IMG_WIDTH,
                 model.IMG_HEIGHT,
+                model.IMG_WIDTH,
                 model.IMG_CHANNELS
             ], name="input_A")
         self.input_b = tf.placeholder(
             tf.float32, [
                 1,
-                model.IMG_WIDTH,
                 model.IMG_HEIGHT,
+                model.IMG_WIDTH,
                 model.IMG_CHANNELS
             ], name="input_B")
 
         self.fake_pool_A = tf.placeholder(
             tf.float32, [
                 None,
-                model.IMG_WIDTH,
                 model.IMG_HEIGHT,
+                model.IMG_WIDTH,
                 model.IMG_CHANNELS
             ], name="fake_pool_A")
         self.fake_pool_B = tf.placeholder(
             tf.float32, [
                 None,
-                model.IMG_WIDTH,
                 model.IMG_HEIGHT,
+                model.IMG_WIDTH,
                 model.IMG_CHANNELS
             ], name="fake_pool_B")
 
