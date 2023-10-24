@@ -5,7 +5,7 @@ Bring your own method
 The idea of this project is to transform an input image of a real person's face to an image in Naruto-style that resembles the face. The approach for this is to use an existing Generative Adversarial Network (GAN) to be able to make a model out of two unpaired domains (real people's faces and faces of Naruto characters).
 ## Datasets
 Naruto faces:
-- (https://www.kaggle.com/datasets/neetuk/naruto-face-dataset) this dataset contains only images of faces of Naruto characters.
+- https://www.kaggle.com/datasets/neetuk/naruto-face-dataset this dataset contains only images of faces of Naruto characters.
 - (https://huggingface.co/datasets/lambdalabs/naruto-blip-captions) this dataset contains images of faces of Naruto characters paired with a description, only the images would be used.
 
 Real faces:
