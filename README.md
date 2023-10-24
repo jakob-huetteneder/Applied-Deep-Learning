@@ -9,6 +9,7 @@ Naruto faces:
 - (https://huggingface.co/datasets/lambdalabs/naruto-blip-captions) this dataset contains images of faces of Naruto characters paired with a description, only the images would be used.
 
 Real faces:
+
 There are more datasets for this, on possibility is the [Labeled Faces in the Wild dataset](http://vis-www.cs.umass.edu/lfw/#download)
 ## Work Breakdown Structure
 ### Dataset collection & Project setup (ca. 8h)
