@@ -1,6 +1,7 @@
 # Style Transfer - Transformation of images of real people into anime-styled images
-## Type of Project
-Bring your own method
+## Topic & Type of Project
+Topic: Style Transfer
+Type: Bring your own method
 ## Project Idea and Approach
 The idea of this project is to transform an input image of a real person's face to an image in Naruto-style that resembles the face. The approach for this is to use an existing Generative Adversarial Network (GAN) to be able to make a model out of two unpaired domains (real people's faces and faces of Naruto characters).
 ## Datasets
