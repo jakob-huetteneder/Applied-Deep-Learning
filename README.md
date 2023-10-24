@@ -6,7 +6,8 @@ The idea of this project is to transform an input image of a real person's face 
 ## Datasets
 Naruto faces:
 - (https://www.kaggle.com/datasets/neetuk/naruto-face-dataset) this dataset contains only images of faces of Naruto characters.
-- (https://huggingface.co/datasets/lambdalabs/naruto-blip-captions) this dataset contains images of faces of Naruto characters paired with a description, only the images would be used.  
+- (https://huggingface.co/datasets/lambdalabs/naruto-blip-captions) this dataset contains images of faces of Naruto characters paired with a description, only the images would be used.
+
 Real faces:
 There are more datasets for this, on possibility is the [Labeled Faces in the Wild dataset](http://vis-www.cs.umass.edu/lfw/#download)
 ## Work Breakdown Structure
