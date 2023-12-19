@@ -5,7 +5,7 @@ import random
 
 import click
 
-from . import cyclegan_datasets
+import cyclegan_datasets
 
 
 def create_list(foldername, fulldir=True, suffix=".jpg"):
@@ -34,15 +34,15 @@ def create_list(foldername, fulldir=True, suffix=".jpg"):
 @click.command()
 @click.option('--image_path_a',
               type=click.STRING,
-              default='./input/horse2zebra/trainA',
+              default='./input/real2naruto/trainA',
               help='The path to the images from domain_a.')
 @click.option('--image_path_b',
               type=click.STRING,
-              default='./input/horse2zebra/trainB',
+              default='./input/real2naruto/trainB',
               help='The path to the images from domain_b.')
 @click.option('--dataset_name',
               type=click.STRING,
-              default='horse2zebra_train',
+              default='real2naruto_train',
               help='The name of the dataset in cyclegan_dataset.')
 @click.option('--do_shuffle',
               type=click.BOOL,

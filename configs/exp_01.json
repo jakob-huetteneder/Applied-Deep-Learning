@@ -4,7 +4,7 @@
   "base_lr":0.0002,
   "max_step": 200,
   "network_version": "pytorch",
-  "dataset_name": "horse2zebra_train",
+  "dataset_name": "real2naruto_train",
   "do_flipping": 1,
   "_LAMBDA_A": 10,
   "_LAMBDA_B": 10
