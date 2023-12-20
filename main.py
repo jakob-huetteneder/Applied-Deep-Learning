@@ -4,13 +4,14 @@ import json
 import numpy as np
 import os
 import random
-from scipy.misc import imsave
+#from scipy.misc import imsave
+import imageio
 
 import click
 import tensorflow as tf
 
-from . import cyclegan_datasets
-from . import data_loader, losses, model
+import cyclegan_datasets
+import data_loader, losses, model
 
 slim = tf.contrib.slim
 
@@ -30,7 +31,7 @@ class CycleGAN:
         self._lambda_b = lambda_b
         self._output_dir = os.path.join(output_root_dir, current_time)
         self._images_dir = os.path.join(self._output_dir, 'imgs')
-        self._num_imgs_to_save = 20
+        self._num_imgs_to_save = 0
         self._to_restore = to_restore
         self._base_lr = base_lr
         self._max_step = max_step
@@ -213,9 +214,11 @@ class CycleGAN:
 
                 for name, tensor in zip(names, tensors):
                     image_name = name + str(epoch) + "_" + str(i) + ".jpg"
-                    imsave(os.path.join(self._images_dir, image_name),
-                           ((tensor[0] + 1) * 127.5).astype(np.uint8)
-                           )
+                    #imsave(os.path.join(self._images_dir, image_name),
+                     #      ((tensor[0] + 1) * 127.5).astype(np.uint8)
+                      #     )
+                    imageio.imwrite(os.path.join(self._images_dir, image_name),
+                                    ((tensor[0] + 1) * 127.5).astype(np.uint8))
                     v_html.write(
                         "<img src=\"" +
                         os.path.join('imgs', image_name) + "\">"

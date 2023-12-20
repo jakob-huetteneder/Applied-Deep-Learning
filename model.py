@@ -2,7 +2,7 @@
 
 import tensorflow as tf
 
-from . import layers
+import layers
 
 # The number of samples per batch.
 BATCH_SIZE = 1

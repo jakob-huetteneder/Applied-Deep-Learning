@@ -1,7 +1,7 @@
 import tensorflow as tf
 
-from . import cyclegan_datasets
-from . import model
+import cyclegan_datasets
+import model
 
 
 def _load_samples(csv_name, image_type):
