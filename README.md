@@ -26,7 +26,7 @@ In your project you should have a folder structure like this:
 	}
 
 	PATH_TO_CSV = {
-    'dataset_name_train': './input/face2ramen/face2ramen_train.csv'
+    'dataset_name_train': './input/dataset_name/dataset_name_train.csv'
 	}
 
 	DATASET_TO_IMAGETYPE = {
