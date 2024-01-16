@@ -78,6 +78,9 @@ python main.py \
 ```
 The result is saved in CycleGAN_TensorFlow/output/cyclegan/exp_01/#new_timestamp#.
 
+### Anvil Application
+
+If you want to start the anvil application yourself, you need to have the folders in the assets of the latest release in your project structure. Then simply run the anvil_application.py file.
 
 
 
