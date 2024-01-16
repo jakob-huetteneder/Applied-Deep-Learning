@@ -31,7 +31,7 @@ class CycleGAN:
         self._lambda_b = lambda_b
         self._output_dir = os.path.join(output_root_dir, current_time)
         self._images_dir = os.path.join(self._output_dir, 'imgs')
-        self._num_imgs_to_save = 0
+        self._num_imgs_to_save = 20
         self._to_restore = to_restore
         self._base_lr = base_lr
         self._max_step = max_step
@@ -225,6 +225,47 @@ class CycleGAN:
                     )
                 v_html.write("<br>")
 
+    def save_images2(self, sess, epoch):
+        """
+        Saves input and output images.
+
+        :param sess: The session.
+        :param epoch: Currnt epoch.
+        """
+        output_path = './output/cyclegan/anvil_app'
+
+        if not os.path.exists(output_path):
+            os.makedirs(output_path)
+
+        names = ['inputA_', 'inputB_', 'fakeA_',
+                 'fakeB_', 'cycA_', 'cycB_']
+
+        for i in range(0, self._num_imgs_to_save):
+            print("Saving image {}/{}".format(i, self._num_imgs_to_save))
+            inputs = sess.run(self.inputs)
+            fake_A_temp, fake_B_temp, cyc_A_temp, cyc_B_temp = sess.run([
+                self.fake_images_a,
+                self.fake_images_b,
+                self.cycle_images_a,
+                self.cycle_images_b
+            ], feed_dict={
+                self.input_a: inputs['images_i'],
+                self.input_b: inputs['images_j']
+            })
+
+            tensors = [inputs['images_i'], inputs['images_j'],
+                       fake_B_temp, fake_A_temp, cyc_A_temp, cyc_B_temp]
+
+            for name, tensor in zip(names, tensors):
+                if name == 'fakeA_':
+                    image_name = "generated_image.jpg"
+                    #imsave(os.path.join(self._images_dir, image_name),
+                    #      ((tensor[0] + 1) * 127.5).astype(np.uint8)
+                    #     )
+                    imageio.imwrite(os.path.join(output_path, image_name),
+                                    ((tensor[0] + 1) * 127.5).astype(np.uint8))
+
+
     def fake_image_pool(self, num_fakes, fake, fake_pool):
         """
         This function saves the generated image to corresponding
@@ -375,7 +416,7 @@ class CycleGAN:
             coord.join(threads)
             writer.add_graph(sess.graph)
 
-    def test(self):
+    def test(self, image_saving):
         """Test Function."""
         print("Testing the results")
 
@@ -398,7 +439,10 @@ class CycleGAN:
 
             self._num_imgs_to_save = cyclegan_datasets.DATASET_TO_SIZES[
                 self._dataset_name]
-            self.save_images(sess, 0)
+            if image_saving == 1:
+                self.save_images(sess, 0)
+            if image_saving == 2:
+                self.save_images2(sess, 0)
 
             coord.request_stop()
             coord.join(threads)
@@ -438,8 +482,9 @@ def main(to_train, log_dir, config_filename, checkpoint_dir, skip):
     :param skip: A boolean indicating whether to add skip connection between
     input and output.
     """
-    if not os.path.isdir(log_dir):
-        os.makedirs(log_dir)
+    if not to_train == 3:
+        if not os.path.isdir(log_dir):
+            os.makedirs(log_dir)
 
     with open(config_filename) as config_file:
         config = json.load(config_file)
@@ -459,10 +504,12 @@ def main(to_train, log_dir, config_filename, checkpoint_dir, skip):
                               to_restore, base_lr, max_step, network_version,
                               dataset_name, checkpoint_dir, do_flipping, skip)
 
-    if to_train > 0:
+    if 0 < to_train < 3:
         cyclegan_model.train()
+    if to_train == 3:
+        cyclegan_model.test(2)
     else:
-        cyclegan_model.test()
+        cyclegan_model.test(1)
 
 
 if __name__ == '__main__':

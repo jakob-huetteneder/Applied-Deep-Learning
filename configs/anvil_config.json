@@ -1,0 +1,6 @@
+{
+  "description": "Testing with trained model.",
+  "network_version": "pytorch",
+  "dataset_name": "real2naruto_anvil",
+  "do_flipping": 0
+}
